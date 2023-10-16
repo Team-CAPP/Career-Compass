@@ -1,0 +1,13 @@
+{
+  "name": "career-compass",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+    
+  },
+  "keywords": [],
+  "author": "Caheri Aguilar, Jason Pennini, Justin Chu, Rachel Poweer",
+  "license": "ISC"
+}
