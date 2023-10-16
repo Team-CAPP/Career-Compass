@@ -5,10 +5,7 @@ import AppForm from './components/AppForm';
 function App() {
   return (
       <div className='App'>
-        <Navbar> </Navbar>
-        <Intro> </Intro>
-        <Gallery> </Gallery>
-        <Footer></Footer>
+        <AppForm></AppForm>
       </div>
   );
 }
