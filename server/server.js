@@ -2,7 +2,18 @@ const path = require('path');
 const express = require('express');
 
 const app = express();
+
+const apiRouter = require('./routes/api');
+
 const PORT = 3000;
+
+// for environment production serve static files from dist
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static(path.resolve(__dirname, '../dist')));
+}
+
+// define route handlers
+app.use('/api', apiRouter);
 
 // handle parsing request body;
 app.use(express.json());
