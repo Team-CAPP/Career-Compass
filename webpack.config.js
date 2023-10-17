@@ -55,8 +55,8 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './client/index.html',
     }),
-    new MiniCssExtractPlugin({
-      filename: 'App.css',
-    }),
+  //   new MiniCssExtractPlugin({
+  //     filename: 'App.css',
+  //   }),
   ],
 };
