@@ -8,9 +8,9 @@ function App() {
     //needs to implement React router to serve login then main application. And Form on button click
     <div className='App'>
       <div className='Form-Container'>
-        {/* <AppForm></AppForm>
-        <Notes></Notes> */}
-        <Login></Login>
+        <AppForm></AppForm>
+        <Notes></Notes>
+        {/* <Login></Login> */}
       </div>
     </div>
   );

@@ -7,16 +7,18 @@ const apiRouter = require('./routes/api');
 
 const PORT = 3000;
 
+// handle parsing request body;
+app.use(express.json());
+
 // for environment production serve static files from dist
-if (process.env.NODE_ENV === 'production') {
-    app.use(express.static(path.resolve(__dirname, '../dist')));
-}
+// if (process.env.NODE_ENV === 'production') {
+//     app.use(express.static(path.resolve(__dirname, '../dist')));
+// }
+
+app.use(express.static(path.resolve(__dirname, '../dist')));
 
 // define route handlers
 app.use('/api', apiRouter);
-
-// handle parsing request body;
-app.use(express.json());
 
 // catch-all route handler for any requests to an unknown route
 app.use((req, res) => res.status(404).send('Page not found'));

@@ -12,10 +12,12 @@ jobAppController.getApplication = (req, res, next) => {
 
 jobAppController.createApplication = async (req, res, next) => {
     try {
-        const {role, company, url, app_deadline, salary, location, data_applied_notes } = req.body;
+        console.log('hello world')
+        console.log(req.body)
+        const {role, company, url, app_deadline, salary, location, date_applied, notes, status} = req.body; // TODO: add date_applied & notes later
 
-        await models.Application.create({role, company, url, app_deadline, salary, location, data_applied_notes});
-
+        const newApp = await models.Application.create({role, company, url, app_deadline, salary, location, date_applied, notes, status});
+        res.locals.newApp = newApp;
         return next();
 
     } catch(err) {
