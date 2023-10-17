@@ -79,12 +79,10 @@ const config = {
   // *** check if we really use json
 
   // A map from regular expressions to module names or to arrays of module names that allow to stub out resources with a single module
-  moduleNameMapper: {
-    '\\.(css|less)$': 'identity-obj-proxy',
-    '^config$': '<rootDir>/webpack.config.js',
-  },
-  // *** could also be <rooDir>/__mocks__/styleMock.js
-  // *** not sure about config
+  // moduleNameMapper: {
+  //   '\\.(css|less)$': 'identity-obj-proxy',
+  //   '^config$': '<rootDir>/webpack.config.js',
+  // },
 
   // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
   // modulePathIgnorePatterns: [],
@@ -96,7 +94,7 @@ const config = {
   // notifyMode: "failure-change",
 
   // A preset that is used as a base for Jest's configuration
-  preset: '@shelf/jest-mongodb'
+  preset: '@shelf/jest-mongodb',
 
   // Run tests from one or more projects
   // projects: undefined,
@@ -140,7 +138,7 @@ const config = {
   // snapshotSerializers: [],
 
   // The test environment that will be used for testing
-  // testEnvironment: "jest-environment-node",
+  // testEnvironment: 'jest-environment-node',
 
   // Options that will be passed to the testEnvironment
   // testEnvironmentOptions: {},
@@ -169,7 +167,13 @@ const config = {
   // testRunner: "jest-circus/runner",
 
   // A map from regular expressions to paths to transformers
-  transform: { '\\.jsx?$': 'babel-jest', '.[s]css$': 'css-loader' },
+  transform: {
+    '^.+\\.jsx?$': 'babel-jest',
+    '^.+\\.css$': [
+      'jest-transform-css',
+      { modules: true, generateScopedName: '[path]_[name]_[local]' },
+    ],
+  },
   // *** check for a css transformer
 
   // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
