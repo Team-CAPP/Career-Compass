@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 
 function AppForm() {
   // where form state will go
-  const [job, setJob] = useState('');
+  const [role, setRole] = useState('');
   const [company, setCompany] = useState('');
   const [url, setURL] = useState('');
-  const [deadline, setDeadline] = useState('');
+  const [app_deadline, setDeadline] = useState('');
   const [salary, setSalary] = useState('');
   const [location, setLocation] = useState('');
 
@@ -13,11 +13,11 @@ function AppForm() {
     const { name, value } = event.target;
 
     switch (name) {
-      case 'Job':
-        setJob(value);
+      case 'Role':
+        setRole(value);
         break;
       case 'Company':
-        setPassword(value);
+        setCompany(value);
         break;
       case 'URL':
         setURL(value);
@@ -44,14 +44,16 @@ function AppForm() {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        job,
+        role,
         company,
         url,
-        deadline,
+        app_deadline,
         salary,
         location,
       }),
     });
+    console.log(response.status)
+
   };
   //function to send http request to server.  Creating document
 
@@ -62,9 +64,9 @@ function AppForm() {
           Job/Role Title *
           <input
             type='text'
-            name='Job'
+            name='Role'
             className='Input-Line'
-            value={job}
+            value={role}
             onChange={handleChange}
           />
         </label>
@@ -94,7 +96,7 @@ function AppForm() {
             type='text'
             name='Deadline'
             className='Input-Line'
-            value={deadline}
+            value={app_deadline}
             onChange={handleChange}
           />
         </label>
