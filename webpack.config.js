@@ -51,10 +51,11 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx'],
   },
-  // plugins: [
-  //   new HtmlWebpackPlugin({
-  //     template: './client/index.html',
-  //   }),
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './client/index.html',
+    }),
+  ],
   //   new MiniCssExtractPlugin({
   //     filename: 'App.css',
   //   }),
