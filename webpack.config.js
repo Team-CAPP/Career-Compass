@@ -24,8 +24,6 @@ module.exports = {
     historyApiFallback: true,
     proxy: {
       '/api/**': 'http://localhost:3000',
-
-
     },
   },
   module: {
@@ -36,25 +34,29 @@ module.exports = {
         loader: 'babel-loader',
         options: {
           presets: ['@babel/preset-env', '@babel/preset-react'],
-          plugins: ['@babel/plugin-transform-runtime', '@babel/transform-async-to-generator'],
+          plugins: [
+            '@babel/plugin-transform-runtime',
+            '@babel/transform-async-to-generator',
+          ],
         },
       },
       {
-        test: /\.scss$/,
+        test: /\.css$/,
         exclude: /node_modules/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
+        // use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
+        use: ['style-loader', 'css-loader'],
       },
     ],
   },
   resolve: {
     extensions: ['.js', '.jsx'],
   },
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: './client/index.html',
-    }),
-    new MiniCssExtractPlugin({
-      filename: 'styles.css',
-    }),
-  ],
+  // plugins: [
+  //   new HtmlWebpackPlugin({
+  //     template: './client/index.html',
+  //   }),
+  //   new MiniCssExtractPlugin({
+  //     filename: 'App.css',
+  //   }),
+  // ],
 };
