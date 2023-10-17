@@ -16,7 +16,7 @@ describe('insert', () => {
     await connection.close();
   });
 
-  it('should insert a doc into collection', async () => {
+  it('Should insert a doc into collection', async () => {
     const users = db.collection('users');
 
     const mockUser = { _id: 'some-user-id', name: 'John' };
