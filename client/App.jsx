@@ -1,3 +1,4 @@
+import React from 'react';
 import './App.css';
 import AppForm from './components/AppForm';
 import Notes from './components/Notes';

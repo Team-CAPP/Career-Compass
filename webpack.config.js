@@ -5,7 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
-  mode: process.env.NODE_ENV,
+  mode: 'development',
   entry: './client/index.js',
   output: {
     path: path.join(__dirname, '/dist'),
@@ -24,8 +24,6 @@ module.exports = {
     historyApiFallback: true,
     proxy: {
       '/api/**': 'http://localhost:3000',
-
-
     },
   },
   module: {
@@ -36,7 +34,10 @@ module.exports = {
         loader: 'babel-loader',
         options: {
           presets: ['@babel/preset-env', '@babel/preset-react'],
-          plugins: ['@babel/plugin-transform-runtime', '@babel/transform-async-to-generator'],
+          plugins: [
+            '@babel/plugin-transform-runtime',
+            '@babel/transform-async-to-generator',
+          ],
         },
       },
       {
