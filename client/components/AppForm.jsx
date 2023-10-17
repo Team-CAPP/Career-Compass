@@ -5,16 +5,15 @@ function AppForm() {
 
   //function to send http request to server.  Creating document
 
-
   return (
     <div>
       <form className='Field-Container'>
-          <label>
-            Job/Role Title
-            <input type='text' name='Job' className='Input-Line' />
-          </label>
         <label>
-          Company
+          Job/Role Title *
+          <input type='text' name='Job' className='Input-Line' />
+        </label>
+        <label>
+          Company *
           <input type='text' name='Company' className='Input-Line' />
         </label>
         <label>
