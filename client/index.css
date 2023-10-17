@@ -1,7 +1,7 @@
 .Form-Container {
   display: flex;
   flex-direction: row;
-  border: 1px solid black;
+  border: 1px solid rgba(105, 105, 105, 0.284);
   border-radius: 5px;
   justify-content: space-around;
   width: 70%;
@@ -15,9 +15,10 @@
   transform: translate(-50%, 0);
   margin: 2em 0;
   padding: 4em;
-  box-shadow: 1px 1px 1px black, 0 0 60px #8b8075 inset;
+  box-shadow: 1px 1px 1px rgba(60, 59, 59, 0.47), 0 0 60px #8b8075 inset;
   background: #fffef0;
   filter: url(#wavy2);
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .Field-Container {
@@ -28,6 +29,7 @@
 .Field-Container label {
   display: block;
   margin-bottom: 5%;
+  font-size: medium;
 }
 
 .Field-Container input {
@@ -39,6 +41,10 @@
   background: transparent;
   border: none;
   border-bottom: 1px solid #000000;
+}
+
+input[type='text']:focus {
+  outline: none;
 }
 
 .Notes-Container {
