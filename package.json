@@ -4,9 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest --verbose",
-    "build": "webpack --config webpack.config.js",
-    "start": "concurrently \"webpack serve --open --hot\" \"nodemon server/server.js\""
+    "test": "NODE_ENV=test jest --verbose",
+    "build": "NODE_ENV=production webpack --config webpack.config.js",
+    "start": "NODE_ENV=production concurrently \"webpack serve --open --hot\" \"nodemon server/server.js\"",
+    "dev": "NODE_ENV=development webpack serve --open & NODE_ENV=development nodemon server/server.js"
   },
   "keywords": [],
   "author": "Caheri Aguilar, Jason Pennini, Justin Chu, Rachel Power",
