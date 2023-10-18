@@ -8,6 +8,14 @@ const userController = require('../controllers/userController.js');
 const router = express.Router();
 
 router.post(
+  '/getApplications',
+  jobAppController.getAllApplications
+  (req, res) => {
+    res.status(200).send('Application records recieved');
+  },
+);
+
+router.get(
   '/createuser',
   userController.createUser,
   userController.startSession,

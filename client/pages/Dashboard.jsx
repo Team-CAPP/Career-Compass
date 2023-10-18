@@ -34,7 +34,7 @@ const AppDashboard = () => {
 
   // Example load data from server
   useEffect(() => {
-    fetch('https://www.ag-grid.com/example-assets/row-data.json')
+    fetch('http://localhost:3000/api/getApplications')
       .then(result => result.json())
       .then(rowData => setRowData(rowData));
   }, []);
