@@ -7,6 +7,7 @@ import React, {
 } from 'react';
 import { AgGridReact } from 'ag-grid-react';
 import { GridApi } from 'ag-grid-community';
+import Navbar from '../components/Navbar';
 import 'ag-grid-community/styles/ag-grid.css';
 import 'ag-grid-community/styles/ag-theme-alpine.css';
 
@@ -45,6 +46,9 @@ const AppDashboard = () => {
 
   return (
     <div>
+      <div className='navBar'>
+        <Navbar />
+      </div>
       {/* Example using Grid's API */}
       <button onClick={buttonListener}>Push Me</button>
 

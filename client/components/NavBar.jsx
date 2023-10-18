@@ -1,23 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-function NavBar() {
+function Navbar() {
   return (
     <>
       <div className='navBar'>
         <nav className='navBarOptions'>
           <ul>
             <li>
-              <Link to='/'>Home</Link>
-            </li>
-            <li>
-              <Link to='/dashboard'>Application Dashboard</Link>
-            </li>
-            <li>
-              <Link to='/application'>New Job Application</Link>
-            </li>
-            <li>
-              <a>Logout</a>
+              <Link to='/'>Logout | </Link>
+              <Link to='/dashboard'>Application Dashboard | </Link>
+              <Link to='/application'>New Job Application | </Link>
             </li>
           </ul>
         </nav>
@@ -26,4 +19,4 @@ function NavBar() {
   );
 }
 
-export default NavBar;
+export default Navbar;

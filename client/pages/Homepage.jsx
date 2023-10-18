@@ -1,14 +1,13 @@
 import React from 'react';
-import NavBar from '../components/NavBar';
+import Navbar from '../components/Navbar';
 import { Outlet } from 'react-router-dom';
 
 function Homepage() {
   return (
     <>
       <div className='App'>
-        <h1>Career Compass</h1>
         <div className='navBar'>
-          <NavBar />
+          <Navbar />
         </div>
         <div className='mainContainer'>
           <Outlet />

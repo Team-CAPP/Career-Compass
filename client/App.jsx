@@ -3,12 +3,19 @@ import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
 import Homepage from './pages/Homepage';
 import Application from './pages/Application';
+import Navbar from './components/Navbar';
 import Login from './pages/Login';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  useSearchParams,
+} from 'react-router-dom';
 
 function App() {
   return (
     <>
+      <h1>Career Compass</h1>
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<Homepage />} />
