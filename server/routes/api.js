@@ -3,8 +3,13 @@ const path = require('path');
 // const fs = require('fs')
 
 const jobAppController = require('../controllers/jobAppController');
+const userController = require('../controllers/userController.js');
 
 const router = express.Router();
+
+router.post('/createUser', userController.createUser, (req, res) => {
+    res.status(200).send('New user created');
+})
 
 router.get('/', (req, res) => {
     res.status(200).json(res.locals.applications);
@@ -15,7 +20,7 @@ router.get('/', (req, res) => {
 // })
 
 router.post('/application', jobAppController.createApplication, (req, res) => {
-    res.status(200).send(res.locals.newApp)
+    res.status(200).send(res.locals.newApp);
 })
 
 module.exports = router;
