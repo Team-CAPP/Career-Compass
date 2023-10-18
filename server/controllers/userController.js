@@ -17,6 +17,7 @@ userController.createUser = async (req, res, next) => {
         }
         const hash = await bcrypt.hash(password, 10);
         const user = await User.create({ username, password: hash, email })
+        console.log(user)
         res.locals.user = user._id;
         return next();
     } catch (err) {
@@ -44,7 +45,6 @@ userController.verifyUser = async (req, res, next) => {
             res.sent('username or password is incorrect');
         }
         res.locals.user = user._id
-        console.log(typeof res.locals.user)
         return next();
     } catch (err) {
         const errObj = {
@@ -68,8 +68,8 @@ userController.startSession = async (req, res, next) => {
     }
 }
 
-userController.setSSIDCookie = (req, res, next) => {
-    res.cookie('ssid', res.locals.user, { httpOnly: true });
+userController.setSSIDCookie = async (req, res, next) => {
+    await res.cookie('ssid', res.locals.user, { httpOnly: true });
     return next();
 }
 

@@ -12,7 +12,7 @@ const Schema = mongoose.Schema;
 
 const sessionSchema = new Schema({
     cookieId: { type: String, required: true, unique: true },
-    createdAt: { type: Date, expiresAfterSeconds: 240, default: Date.now },
+    createdAt: { type: Date, expires: 240, default: Date.now },
     email: String,
 })
 
