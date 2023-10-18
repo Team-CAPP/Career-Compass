@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function Login() {
+function CreateUser() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
@@ -25,7 +25,7 @@ function Login() {
   const handleSubmit = async event => {
     event.preventDefault();
 
-    const response = await fetch('/api/login', {
+    const response = await fetch('/api/createUser', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -48,6 +48,7 @@ function Login() {
             className='Input-Line'
             value={username}
             onChange={handleChange}
+            required
           />
         </label>
         <label>
@@ -58,6 +59,7 @@ function Login() {
             className='Input-Line'
             value={password}
             onChange={handleChange}
+            required
           />
         </label>
         <label>
@@ -76,4 +78,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default CreateUser;

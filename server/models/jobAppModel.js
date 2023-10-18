@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-
+const bcrypt = require('bcrypt');
 require('dotenv').config();
 
 const MONGO_URI = process.env.MONGO_URI;
@@ -9,14 +9,6 @@ mongoose.connect(MONGO_URI)
     .catch(err => console.log(err));
 
 const Schema = mongoose.Schema;
-
-const userSchema = new Schema({
-    username: String,
-    pasword: String,
-    email: String,
-})
-
-const User = mongoose.model('user', userSchema)
 
 // set a schema for the 'applications' collection
 const applicationSchema = new Schema({
@@ -72,8 +64,9 @@ const negotiationSchema = new Schema({
 
 const Negotiation = mongoose.model('negotiation', negotiationSchema);
 
+
+
 module.exports = {
-    User,
     Application,
     Contact,
     Interview,
