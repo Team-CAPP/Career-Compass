@@ -27,7 +27,7 @@ router.post(
   },
 );
 
-router.get('/', (req, res) => {
+router.get('/', jobAppController.getAllApplications, (req, res) => {
   res.status(200).json(res.locals.applications);
 });
 

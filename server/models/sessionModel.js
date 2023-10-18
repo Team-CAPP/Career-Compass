@@ -11,8 +11,8 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const sessionSchema = new Schema({
-    cookieId: {type: String, required: true, unique: true},
-    createdAt: {type: Date, expiresAfterSeconds: 900, default: Date.now},
+    cookieId: { type: String, required: true, unique: true },
+    createdAt: { type: Date, expires: 240, default: Date.now },
     email: String,
 })
 
