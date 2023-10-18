@@ -3,7 +3,7 @@ import AppForm from './components/AppForm';
 import Notes from './components/Notes';
 import CreateUser from './pages/CreateUser';
 import AppDashboard from './pages/AppDashboard';
-import { BrowserRouter, Routes, Routes, Navigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
 function App() {
   return (
