@@ -17,27 +17,36 @@ const AppDashboard = () => {
 
   // Each Column Definition results in one Column.
   const [columnDefs, setColumnDefs] = useState([
-    { field: 'make', filter: true },
-    { field: 'model', filter: true },
-    { field: 'price' },
+    { field: 'date', headerName: 'Date Applied', filter: true },
+    { field: 'job', headerName: 'Job Title', filter: true },
+    { field: 'company', headerName: 'Company Name' },
+    { field: 'status', headerName: 'Application Status' },
   ]);
 
+  const gridStyle = useMemo(() => ({ height: '600px', width: '100%' }), []);
+
   // DefaultColDef sets props common to all Columns
-  const defaultColDef = useMemo(() => ({
-    sortable: true,
-  }));
+  const defaultColDef = useMemo(
+    () => ({
+      flex: 1,
+      filter: true,
+      sortable: true,
+      resizable: true,
+    }),
+    [],
+  );
 
   // Example of consuming Grid Event
   const cellClickedListener = useCallback(event => {
     console.log('cellClicked', event);
   }, []);
 
-  // Example load data from server
-  useEffect(() => {
-    fetch('https://www.ag-grid.com/example-assets/row-data.json')
-      .then(result => result.json())
-      .then(rowData => setRowData(rowData));
-  }, []);
+  // // Example load data from server
+  // useEffect(() => {
+  //   fetch('/api/')
+  //     .then(result => result.json())
+  //     .then(rowData => setRowData(rowData));
+  // }, []);
 
   // Example using Grid's API
   const buttonListener = useCallback(e => {
@@ -50,10 +59,10 @@ const AppDashboard = () => {
         <Navbar />
       </div>
       {/* Example using Grid's API */}
-      <button onClick={buttonListener}>Push Me</button>
+      <button onClick={buttonListener}>Add New Job Application</button>
 
       {/* On div wrapping Grid a) specify theme CSS Class Class and b) sets Grid size */}
-      <div className='ag-theme-alpine' style={{ width: 500, height: 500 }}>
+      <div className='ag-theme-alpine' style={gridStyle}>
         <AgGridReact
           ref={gridRef} // Ref for accessing Grid's API
           rowData={rowData} // Row Data for Rows
