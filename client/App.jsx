@@ -1,7 +1,7 @@
 import React from 'react';
 import AppForm from './components/AppForm';
 import Notes from './components/Notes';
-import Login from './pages/Login';
+import CreateUser from './pages/CreateUser';
 import AppDashboard from './pages/AppDashboard';
 import { BrowserRouter, Routes, Routes, Navigate } from 'react-router-dom';
 
@@ -22,8 +22,7 @@ function App() {
       <div className='Form-Container'>
         {/* <AppForm></AppForm>
         <Notes></Notes> */}
-        <Login></Login>
-        {/* <AppDashboard></AppDashboard> */}
+        <CreateUser></CreateUser>
       </div>
     </div>
   );
