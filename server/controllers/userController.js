@@ -73,4 +73,23 @@ userController.setSSIDCookie = async (req, res, next) => {
     return next();
 }
 
+userController.isLoggedIn = async (req, res, next) => {
+    try {
+        const {ssid} = req.cookies;
+        const user_session = await Session.findOne({cookieId:ssid})
+        if (!user_session) {
+            await Session.create({ cookieId: res.locals.user })
+            return next();
+        } else {
+            return next();
+        }
+    } catch (err) {
+        return next({
+            log: `userController.isLoggedIn Error: ${err}`,
+            status: 500,
+            message: { err: 'An error ocurred' },
+        })
+    }
+}
+
 module.exports = userController;

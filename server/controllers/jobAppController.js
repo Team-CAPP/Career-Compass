@@ -7,7 +7,7 @@ jobAppController.getAllApplications = async (req, res, next) => {
     try {
         const { ssid } = req.cookies;
 
-        const userApplications = await Application.find({ ssid });
+        const userApplications = await Application.find({ user_id: ssid });
         res.locals.userApplications = userApplications;
         console.log(res.locals.userApplications)
         return next();
