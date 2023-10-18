@@ -20,15 +20,15 @@ router.post(
 router.post(
   '/login',
   userController.verifyUser,
-  userController.startSession,
   userController.setSSIDCookie,
+  userController.isLoggedIn,
   (req, res) => {
     res.status(200).send('User logged in');
   },
 );
 
 router.get('/', jobAppController.getAllApplications, (req, res) => {
-  res.status(200).json(res.locals.applications);
+  res.status(200).json(res.locals.userApplications);
 });
 
 // router.get('/application', (req, res) => {
