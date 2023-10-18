@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [email, setEmail] = useState('');
 
   const handleChange = event => {
     const { name, value } = event.target;
@@ -15,9 +14,6 @@ function Login() {
       case 'password':
         setPassword(value);
         break;
-      case 'email':
-        setEmail(value);
-        break;
       default:
         return;
     }
@@ -25,7 +21,7 @@ function Login() {
   const handleSubmit = async event => {
     event.preventDefault();
 
-    const response = await fetch('/api/createUser', {
+    const response = await fetch('/api/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -33,9 +29,9 @@ function Login() {
       body: JSON.stringify({
         username,
         password,
-        email,
       }),
     });
+    if (response.json().status === 200) return Navigate('/application');
   };
   return (
     <div className='Login-Container'>
@@ -60,16 +56,6 @@ function Login() {
             value={password}
             onChange={handleChange}
             required
-          />
-        </label>
-        <label>
-          Email
-          <input
-            type='text'
-            name='email'
-            className='Input-Line'
-            value={email}
-            onChange={handleChange}
           />
         </label>
         <input type='submit' value='Submit' onClick={handleSubmit} />
