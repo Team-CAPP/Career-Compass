@@ -53,28 +53,40 @@ const AppDashboard = () => {
     gridRef.current.api.deselectAll();
   }, []);
 
-  return (
-    <div>
-      <div className='navBar'>
-        <Navbar />
-      </div>
-      {/* Example using Grid's API */}
-      <button onClick={buttonListener}>Add New Job Application</button>
+  const [authenticated, setauthenticated] = useState(false);
+  useEffect(() => {
+    const loggedInUser = localStorage.getItem('authenticated');
+    if (loggedInUser) {
+      setauthenticated(loggedInUser);
+    }
+  }, []);
 
-      {/* On div wrapping Grid a) specify theme CSS Class Class and b) sets Grid size */}
-      <div className='ag-theme-alpine' style={gridStyle}>
-        <AgGridReact
-          ref={gridRef} // Ref for accessing Grid's API
-          rowData={rowData} // Row Data for Rows
-          columnDefs={columnDefs} // Column Defs for Columns
-          defaultColDef={defaultColDef} // Default Column Properties
-          animateRows={true} // Optional - set to 'true' to have rows animate when sorted
-          rowSelection='multiple' // Options - allows click selection of rows
-          onCellClicked={cellClickedListener} // Optional - registering for Grid Event
-        />
+  if (!authenticated) {
+    // Redirect
+  } else {
+    return (
+      <div>
+        <div className='navBar'>
+          <Navbar />
+        </div>
+        {/* Example using Grid's API */}
+        <button onClick={buttonListener}>Add New Job Application</button>
+
+        {/* On div wrapping Grid a) specify theme CSS Class Class and b) sets Grid size */}
+        <div className='ag-theme-alpine' style={gridStyle}>
+          <AgGridReact
+            ref={gridRef} // Ref for accessing Grid's API
+            rowData={rowData} // Row Data for Rows
+            columnDefs={columnDefs} // Column Defs for Columns
+            defaultColDef={defaultColDef} // Default Column Properties
+            animateRows={true} // Optional - set to 'true' to have rows animate when sorted
+            rowSelection='multiple' // Options - allows click selection of rows
+            onCellClicked={cellClickedListener} // Optional - registering for Grid Event
+          />
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 };
 
 export default AppDashboard;

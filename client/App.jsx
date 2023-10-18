@@ -1,5 +1,5 @@
 import React from 'react';
-import Register from './pages/Register';
+import Register from './components/RegForm';
 import Dashboard from './pages/Dashboard';
 import Homepage from './pages/Homepage';
 import Application from './pages/Application';
