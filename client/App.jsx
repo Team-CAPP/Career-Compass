@@ -2,6 +2,7 @@ import React from 'react';
 import AppForm from './components/AppForm';
 import Notes from './components/Notes';
 import CreateUser from './components/CreateUser';
+import Login from './components/Login';
 
 function App() {
   return (
@@ -10,7 +11,8 @@ function App() {
       <div className='Form-Container'>
         {/* <AppForm></AppForm>
         <Notes></Notes> */}
-        <CreateUser></CreateUser>
+        {/* <CreateUser></CreateUser> */}
+        <Login></Login>
       </div>
     </div>
   );

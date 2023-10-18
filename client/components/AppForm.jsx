@@ -52,8 +52,7 @@ function AppForm() {
         location,
       }),
     });
-    console.log(response.status)
-
+    console.log(response.status);
   };
   //function to send http request to server.  Creating document
 
