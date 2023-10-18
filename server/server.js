@@ -1,5 +1,9 @@
 const path = require('path');
 const express = require('express');
+const cookieParser = require('cookie-parser');
+const mongoose = require('mongoose');
+
+require('dotenv').config();
 
 const app = express();
 
@@ -7,8 +11,15 @@ const apiRouter = require('./routes/api');
 
 const PORT = 3000;
 
+const MONGO_URI = process.env.MONGO_URI;
+
+mongoose.connect(MONGO_URI)
+    .then(() => console.log('Connected to MongoDB.'))
+    .catch(err => console.log(err));
+
 // handle parsing request body;
 app.use(express.json());
+app.use(cookieParser());
 
 // for environment production serve static files from dist
 // if (process.env.NODE_ENV === 'production') {
