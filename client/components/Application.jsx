@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function AppForm() {
+function Application() {
   // where form state will go
   const [role, setRole] = useState('');
   const [company, setCompany] = useState('');
@@ -52,8 +52,7 @@ function AppForm() {
         location,
       }),
     });
-    console.log(response.status)
-
+    console.log(response.status);
   };
   //function to send http request to server.  Creating document
 
@@ -126,4 +125,4 @@ function AppForm() {
   );
 }
 
-export default AppForm;
+export default Application;

@@ -1,30 +1,27 @@
 import React from 'react';
-import AppForm from './components/AppForm';
+import AppForm from './components/Application';
 import Notes from './components/Notes';
-import CreateUser from './pages/CreateUser';
-import AppDashboard from './pages/AppDashboard';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import Register from './pages/Register';
+import Dashboard from './pages/Dashboard';
+import Homepage from './pages/Homepage';
+import Application from './components/Application';
+import Login from './pages/Login';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import AppDashboard from './pages/Dashboard';
 
 function App() {
   return (
-    //needs to implement React router to serve login then main application. And Form on button click
-
-    //   <BrowserRouter>
-    //   <Routes>
-    //     <Route path='/' element={<Layout />} />
-    //     <Route index element={<Login />} />
-    //     <Route path='/home' element={<Home />} />
-    //     <Route path='/trip' element={<Trip />} />
-    //   </Routes>
-    // </BrowserRouter>
-
-    <div className='App'>
-      <div className='Form-Container'>
-        {/* <AppForm></AppForm>
-        <Notes></Notes> */}
-        <CreateUser></CreateUser>
-      </div>
-    </div>
+    <>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<Homepage />} />
+          <Route index element={<Login />} />
+          <Route path='/createuser' element={<Register />} />
+          <Route path='/dashboard' element={<Dashboard />} />
+          <Route path='/application' element={<Application />} />
+        </Routes>
+      </BrowserRouter>
+    </>
   );
 }
 
