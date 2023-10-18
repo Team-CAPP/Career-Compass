@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function Application() {
+function AppForm() {
   // where form state will go
   const [role, setRole] = useState('');
   const [company, setCompany] = useState('');
@@ -125,4 +125,4 @@ function Application() {
   );
 }
 
-export default Application;
+export default AppForm;

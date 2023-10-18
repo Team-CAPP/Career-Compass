@@ -5,8 +5,15 @@ import { Outlet } from 'react-router-dom';
 function Homepage() {
   return (
     <>
-      {/* <NavBar /> */}
-      <Outlet />
+      <div className='App'>
+        <h1>Career Compass</h1>
+        <div className='navBar'>
+          <NavBar />
+        </div>
+        <div className='mainContainer'>
+          <Outlet />
+        </div>
+      </div>
     </>
   );
 }
