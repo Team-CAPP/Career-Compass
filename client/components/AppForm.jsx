@@ -35,6 +35,7 @@ function AppForm() {
         return;
     }
   };
+
   const handleSubmit = async event => {
     event.preventDefault();
 
