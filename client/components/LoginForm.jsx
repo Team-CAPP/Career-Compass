@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { Link, Navigate } from 'react-router-dom';
-
+import Dashboard from '../pages/Dashboard';
 import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 function LoginForm(props) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [authenticated, setAuthenticated] = useState(props.authenticated);
+  const navigate = useNavigate();
 
   const handleChange = event => {
     const { name, value } = event.target;
@@ -35,11 +37,13 @@ function LoginForm(props) {
         password,
       }),
     });
+    console.log(response);
     if (response.status === 200) {
-      setauthenticated(true);
-      Navigate('/application');
+      setAuthenticated(true);
+      console.log('logging in: ', authenticated);
+      navigate('/dashboard');
     } else {
-      Navigate('/createuser');
+      navigate('/createuser');
     }
   };
 

@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
-import { Link, Navigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import Dashboard from '../pages/Dashboard';
+import { useNavigate } from 'react-router-dom';
 
-function Register(props) {
+function Register() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
-  const [authenticated, setauthenticated] = useState(props.authenticated);
+  const [authenticated, setAuthenticated] = useState(false);
+  const navigate = useNavigate();
 
   const handleChange = event => {
     const { name, value } = event.target;
@@ -42,11 +45,10 @@ function Register(props) {
     console.log(response);
 
     if (response.status === 200) {
-      setauthenticated(true);
-      console.log(authenticated);
-      Navigate('/application');
+      setAuthenticated(true);
+      navigate('/dashboard');
     } else {
-      Navigate('/');
+      navigate('/');
     }
   };
   return (

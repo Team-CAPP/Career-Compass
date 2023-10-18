@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import Application from './Application';
 import LoginForm from '../components/LoginForm';
+import Dashboard from '../pages/Dashboard';
 
 function Login() {
   const [authenticated, setAuthenticated] = useState(false);
-  console.log(authenticated);
+  console.log('authenticated: ', authenticated);
   return (
     <div className='loginContainer'>
       {/* <Routes>
@@ -13,7 +13,7 @@ function Login() {
       </Routes> */}
 
       {authenticated ? (
-        <Application />
+        <Dashboard authenticated={authenticated} />
       ) : (
         <LoginForm authenticated={authenticated} />
       )}
