@@ -42,7 +42,7 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        exclude: /node_modules/,
+        // exclude: /node_modules/,
         // use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
         use: ['style-loader', 'css-loader'],
       },
@@ -55,8 +55,8 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './client/index.html',
     }),
-  //   new MiniCssExtractPlugin({
-  //     filename: 'App.css',
-  //   }),
+    //   new MiniCssExtractPlugin({
+    //     filename: 'App.css',
+    //   }),
   ],
 };
