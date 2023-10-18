@@ -10,13 +10,12 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
-const userSchema = new Schema({
-    username: {type: String, required: true, unique: true},
-    password: {type: String, required: true},
+const sessionSchema = new Schema({
+    cookieId: {type: String, required: true, unique: true},
+    createdAt: {type: Date, expiresAfterSeconds: 900, default: Date.now},
     email: String,
-    applications: [{ type: Schema.Types.ObjectId, ref: 'application' }]
 })
 
-const User = mongoose.model('user', userSchema)
+const Session = mongoose.model('session', sessionSchema)
 
-module.exports = { User };
+module.exports = { Session };
