@@ -38,7 +38,7 @@ userController.verifyUser = async (req, res, next) => {
                 message: { err: 'An error ocurred' },
             });
         }
-        const user = await User.find({ username })
+        const user = await User.findOne({ username })
         const result = await bcrypt.compare(password, user.password)
         if (!result) {
             res.sent('username or password is incorrect');
