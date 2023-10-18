@@ -7,8 +7,12 @@ const userController = require('../controllers/userController.js');
 
 const router = express.Router();
 
-router.post('/createUser', userController.createUser, (req, res) => {
+router.post('/createUser', userController.createUser, userController.startSession, userController.setSSIDCookie, (req, res) => {
     res.status(200).send('New user created');
+})
+
+router.post('/login', userController.verifyUser, userController.startSession, userController.setSSIDCookie, (req, res) => {
+    res.status(200).send('User logged in');
 })
 
 router.get('/', (req, res) => {
