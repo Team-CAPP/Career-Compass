@@ -13,6 +13,7 @@
   "author": "Caheri Aguilar, Jason Pennini, Justin Chu, Rachel Power",
   "license": "ISC",
   "dependencies": {
+    "@mui/material": "^5.14.14",
     "@types/jest": "^29.5.4",
     "ag-grid-community": "^30.2.0",
     "ag-grid-react": "^30.2.0",

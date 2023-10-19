@@ -12,10 +12,11 @@ const Schema = mongoose.Schema;
 
 // set a schema for the 'applications' collection
 const applicationSchema = new Schema({
+    user_id: String,
     role: { type: String, required: true },
     company: { type: String, required: true },
     url: String,
-    app_deadline: { type: String},
+    app_deadline: { type: String },
     salary: String,
     location: String,
     date_applied: { type: String },

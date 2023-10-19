@@ -1,9 +1,14 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { Link, Navigate } from 'react-router-dom';
+import Dashboard from '../pages/Dashboard';
+import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
-function Register() {
+function LoginForm(props) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [email, setEmail] = useState('');
+  const [authenticated, setAuthenticated] = useState(props.authenticated);
+  const navigate = useNavigate();
 
   const handleChange = event => {
     const { name, value } = event.target;
@@ -15,9 +20,6 @@ function Register() {
       case 'password':
         setPassword(value);
         break;
-      case 'email':
-        setEmail(value);
-        break;
       default:
         return;
     }
@@ -25,7 +27,7 @@ function Register() {
   const handleSubmit = async event => {
     event.preventDefault();
 
-    const response = await fetch('/api/createUser', {
+    const response = await fetch('/api/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -33,10 +35,18 @@ function Register() {
       body: JSON.stringify({
         username,
         password,
-        email,
       }),
     });
+    console.log(response);
+    if (response.status === 200) {
+      setAuthenticated(true);
+      console.log('logging in: ', authenticated);
+      navigate('/dashboard');
+    } else {
+      navigate('/createuser');
+    }
   };
+
   return (
     <div className='Login-Container'>
       <form className='Login-Form'>
@@ -62,20 +72,13 @@ function Register() {
             required
           />
         </label>
-        <label>
-          Email
-          <input
-            type='text'
-            name='email'
-            className='Input-Line'
-            value={email}
-            onChange={handleChange}
-          />
-        </label>
         <input type='submit' value='Submit' onClick={handleSubmit} />
       </form>
+      <p>
+        Don't have an account? <Link to='/createuser'>Sign Up!</Link>
+      </p>
     </div>
   );
 }
 
-export default Register;
+export default LoginForm;

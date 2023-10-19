@@ -10,22 +10,34 @@ import { GridApi } from 'ag-grid-community';
 import Navbar from '../components/Navbar';
 import 'ag-grid-community/styles/ag-grid.css';
 import 'ag-grid-community/styles/ag-theme-alpine.css';
+import { useNavigate } from 'react-router-dom';
 
-const AppDashboard = () => {
+const Dashboard = props => {
+  const navigate = useNavigate();
+  const [authenticated, setAuthenticated] = useState(null);
   const gridRef = useRef(); // Optional - for accessing Grid's API
   const [rowData, setRowData] = useState(); // Set rowData to Array of Objects, one Object per Row
 
   // Each Column Definition results in one Column.
   const [columnDefs, setColumnDefs] = useState([
-    { field: 'make', filter: true },
-    { field: 'model', filter: true },
-    { field: 'price' },
+    { field: 'app_deadline', headerName: 'Application Deadline', filter: true },
+    { field: 'role', headerName: 'Job Title', filter: true },
+    { field: 'company', headerName: 'Company Name' },
+    { field: 'status', headerName: 'Application Status' },
   ]);
 
+  const gridStyle = useMemo(() => ({ height: '600px', width: '100%' }), []);
+
   // DefaultColDef sets props common to all Columns
-  const defaultColDef = useMemo(() => ({
-    sortable: true,
-  }));
+  const defaultColDef = useMemo(
+    () => ({
+      flex: 1,
+      filter: true,
+      sortable: true,
+      resizable: true,
+    }),
+    [],
+  );
 
   // Example of consuming Grid Event
   const cellClickedListener = useCallback(event => {
@@ -34,7 +46,7 @@ const AppDashboard = () => {
 
   // Example load data from server
   useEffect(() => {
-    fetch('https://www.ag-grid.com/example-assets/row-data.json')
+    fetch('/api/')
       .then(result => result.json())
       .then(rowData => setRowData(rowData));
   }, []);
@@ -44,16 +56,20 @@ const AppDashboard = () => {
     gridRef.current.api.deselectAll();
   }, []);
 
+  // useEffect(() => {
+  //   if (props.authenticated === false || !props.authenticated) {
+  //     navigate('/');
+  //   } else {
   return (
     <div>
       <div className='navBar'>
         <Navbar />
       </div>
       {/* Example using Grid's API */}
-      <button onClick={buttonListener}>Push Me</button>
+      <button onClick={buttonListener}>Add New Job Application</button>
 
       {/* On div wrapping Grid a) specify theme CSS Class Class and b) sets Grid size */}
-      <div className='ag-theme-alpine' style={{ width: 500, height: 500 }}>
+      <div className='ag-theme-alpine' style={gridStyle}>
         <AgGridReact
           ref={gridRef} // Ref for accessing Grid's API
           rowData={rowData} // Row Data for Rows
@@ -67,5 +83,7 @@ const AppDashboard = () => {
     </div>
   );
 };
+// }, []);
+// };
 
-export default AppDashboard;
+export default Dashboard;
